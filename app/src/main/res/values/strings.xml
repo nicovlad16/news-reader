@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewsReader</string>
+    <string name="article_item_image_description">article item image description</string>
 </resources>

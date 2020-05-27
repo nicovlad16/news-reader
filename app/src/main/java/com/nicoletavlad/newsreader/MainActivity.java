@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.nicoletavlad.newsreader.ui.main.MainFragment;
+import com.nicoletavlad.newsreader.ui.main.feature.newslist.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity
 {
