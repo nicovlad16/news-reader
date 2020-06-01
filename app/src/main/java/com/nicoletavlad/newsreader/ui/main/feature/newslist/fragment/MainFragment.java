@@ -1,7 +1,9 @@
 package com.nicoletavlad.newsreader.ui.main.feature.newslist.fragment;
 
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,10 +16,13 @@ import android.view.ViewGroup;
 
 import com.nicoletavlad.newsreader.databinding.MainFragmentBinding;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.model.NewsListViewModel;
+import com.nicoletavlad.newsreader.ui.main.feature.newslist.model.factory.ViewModelFactory;
+import com.nicoletavlad.newsreader.ui.main.feature.newslist.navigator.AlertNavigator;
 
 public class MainFragment extends Fragment
 {
     private NewsListViewModel viewModel;
+    private AlertNavigator alertNavigator;
 
 
     public static MainFragment newInstance()
@@ -31,8 +36,21 @@ public class MainFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        viewModel = ViewModelProviders.of(requireActivity()).get(NewsListViewModel.class);
+        alertNavigator = new AlertNavigator(getChildFragmentManager(), requireContext());
+
+        viewModel = new ViewModelProvider(this,
+                new ViewModelFactory(requireActivity().getApplication())).get(NewsListViewModel.class);
+        viewModel.error.observe(this, throwable -> alertNavigator.showErrorFor(throwable));
+        viewModel.openLink.observe(this, this::openLink);
         getLifecycle().addObserver(viewModel);
+    }
+
+
+    private void openLink(@NonNull String link)
+    {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(link));
+        startActivity(intent);
     }
 
 
@@ -45,5 +63,4 @@ public class MainFragment extends Fragment
         binding.setViewModel(viewModel);
         return binding.getRoot();
     }
-
 }
