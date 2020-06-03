@@ -1,4 +1,4 @@
-package com.nicoletavlad.data.features.news.remote.mapper;
+package com.nicoletavlad.data.features.news.mapper;
 
 import com.nicoletavlad.data.features.news.model.Article;
 import com.nicoletavlad.data.features.news.remote.model.ArticleDto;

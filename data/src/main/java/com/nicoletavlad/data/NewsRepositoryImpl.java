@@ -1,8 +1,10 @@
 package com.nicoletavlad.data;
 
+import com.nicoletavlad.data.features.news.local.NewsLocalDataSource;
+import com.nicoletavlad.data.features.news.mapper.ArticleEntityToArticlesMapper;
+import com.nicoletavlad.data.features.news.mapper.NewsDtoToArticleEntityMapper;
 import com.nicoletavlad.data.features.news.model.Article;
 import com.nicoletavlad.data.features.news.remote.NewsRemoteSource;
-import com.nicoletavlad.data.features.news.remote.mapper.NewsDtoToNewsMapper;
 
 import java.util.List;
 
@@ -13,10 +15,12 @@ public class NewsRepositoryImpl implements NewsRepository
 {
 
     private final NewsRemoteSource remoteSource;
+    private final NewsLocalDataSource localSource;
 
 
-    public NewsRepositoryImpl(NewsRemoteSource remoteSource)
+    public NewsRepositoryImpl(NewsLocalDataSource localSource, NewsRemoteSource remoteSource)
     {
+        this.localSource = localSource;
         this.remoteSource = remoteSource;
     }
 
@@ -26,7 +30,10 @@ public class NewsRepositoryImpl implements NewsRepository
     public Single<List<Article>> getNewsArticles()
     {
         return remoteSource.getNewsArticles()
-                .map(new NewsDtoToNewsMapper());
+                .map(new NewsDtoToArticleEntityMapper())
+                .flatMap(localSource::saveItems)
+                .onErrorResumeNext(localSource.getArticles())
+                .map(new ArticleEntityToArticlesMapper());
     }
 }
 

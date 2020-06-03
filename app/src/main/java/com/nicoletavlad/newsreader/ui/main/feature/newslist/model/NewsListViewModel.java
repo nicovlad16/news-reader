@@ -12,9 +12,6 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-
-
 import com.nicoletavlad.data.NewsRepository;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.listener.NewsHandler;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.model.mapper.ArticlesToVMListMapper;
@@ -22,15 +19,16 @@ import com.nicoletavlad.newsreader.ui.main.feature.newslist.reactive.SingleLiveE
 
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+
 
 public class NewsListViewModel extends AndroidViewModel implements LifecycleObserver, NewsHandler
 {
-    private final NewsRepository repository;
+    private final static String LINK = "https://newsapi.org/";
     public final ObservableBoolean isLoading;
     public final SingleLiveEvent<Throwable> error;
-    private final static String LINK = "https://newsapi.org/";
     public final SingleLiveEvent<String> openLink;
-
+    private final NewsRepository repository;
     @NonNull
     public ObservableList<ArticleItemViewModel> newsList;
 
@@ -82,6 +80,7 @@ public class NewsListViewModel extends AndroidViewModel implements LifecycleObse
 
     private void onNewsArticlesError(Throwable throwable)
     {
+
         isLoading.set(false);
         error.setValue(throwable);
     }
