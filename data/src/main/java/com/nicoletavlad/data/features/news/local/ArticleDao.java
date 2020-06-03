@@ -5,8 +5,6 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.nicoletavlad.data.features.news.model.Article;
-
 import java.util.List;
 
 import io.reactivex.Completable;
@@ -17,7 +15,7 @@ import io.reactivex.Single;
 public interface ArticleDao
 {
     @Query("SELECT * FROM articles")
-    Flowable<List<ArticleEntity>> queryArticles();
+    Single<List<ArticleEntity>> queryArticles();
 
     @Query("SELECT * FROM articles where id = :id")
     Single<ArticleEntity> queryArticleItem(int id);
@@ -26,7 +24,7 @@ public interface ArticleDao
     Completable deleteAllArticles();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertArticles(List<ArticleEntity> articles);
+    void insertArticles(List<ArticleEntity> articles);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertArticle(ArticleEntity article);

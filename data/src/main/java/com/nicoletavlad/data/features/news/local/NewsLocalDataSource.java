@@ -16,7 +16,7 @@ public class NewsLocalDataSource
     }
 
 
-    public Flowable<List<ArticleEntity>> getArticles()
+    public Single<List<ArticleEntity>> getArticles()
     {
 
         return dao.queryArticles();

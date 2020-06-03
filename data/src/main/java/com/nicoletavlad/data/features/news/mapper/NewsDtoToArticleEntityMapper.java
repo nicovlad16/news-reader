@@ -1,7 +1,6 @@
 package com.nicoletavlad.data.features.news.mapper;
 
 import com.nicoletavlad.data.features.news.local.ArticleEntity;
-import com.nicoletavlad.data.features.news.model.Article;
 import com.nicoletavlad.data.features.news.remote.model.ArticleDto;
 import com.nicoletavlad.data.features.news.remote.model.ArticleListDto;
 
@@ -18,17 +17,14 @@ public class NewsDtoToArticleEntityMapper implements Function<ArticleListDto, Li
     {
         List<ArticleEntity> articles = new ArrayList<>();
 
-        for (ArticleDto dto : articleDtos.articles)
+        for (ArticleDto articleDto : articleDtos.articles)
         {
             ArticleEntity articleEntity = new ArticleEntity();
 
-            articleEntity.setTitle(articleEntity.title);
-
-            articleEntity.setImageUrl(articleEntity.imageUrl);
-
-            articleEntity.setContent(articleEntity.content);
-
-            articleEntity.setDescription(articleEntity.description);
+            articleEntity.setTitle(articleDto.title);
+            articleEntity.setImageUrl(articleDto.urlToImage);
+            articleEntity.setContent(articleDto.content);
+            articleEntity.setDescription(articleDto.description);
 
             articles.add(articleEntity);
         }
