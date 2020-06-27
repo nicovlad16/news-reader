@@ -1,6 +1,7 @@
 package com.nicoletavlad.newsreader.ui.main.view.bindings;
 
 import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 

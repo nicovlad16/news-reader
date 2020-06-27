@@ -44,26 +44,6 @@ public class NewsListViewModel extends AndroidViewModel implements LifecycleObse
     }
 
 
-    //    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-//    public void refresh()
-//    {
-//        if (newsList.isEmpty())
-//        {
-//            ArticleItemViewModel item = new ArticleItemViewModel("title", "content",
-//                    "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60");
-//            newsList.add(item);
-//
-//            item = new ArticleItemViewModel("news title", "news content",
-//                    "https://cdn.pixabay.com/photo/2019/05/05/21/45/forget-me-not-4181791_960_720.jpg");
-//            newsList.add(item);
-//
-//            item = new ArticleItemViewModel("news", "content",
-//                    "https://www.dw.com/image/45348566_303.jpg");
-//            newsList.add(item);
-//        }
-//    }
-
-
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     @SuppressLint("CheckResult")
     public void refresh()
