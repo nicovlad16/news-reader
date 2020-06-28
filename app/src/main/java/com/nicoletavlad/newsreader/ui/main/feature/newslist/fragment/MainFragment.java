@@ -11,15 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.nicoletavlad.newsreader.R;
 import com.nicoletavlad.newsreader.databinding.MainFragmentBinding;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.model.NewsListViewModel;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.model.factory.ViewModelFactory;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.navigator.AlertNavigator;
 
-import java.util.Objects;
 
 public class MainFragment extends Fragment
 {
@@ -38,7 +35,7 @@ public class MainFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        alertNavigator = new AlertNavigator(getChildFragmentManager(), requireContext());
+        alertNavigator = new AlertNavigator(requireContext());
 
         viewModel = new ViewModelProvider(this,
                 new ViewModelFactory(requireActivity().getApplication())).get(NewsListViewModel.class);

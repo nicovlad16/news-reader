@@ -27,8 +27,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ArticleViewHol
     }
 
 
+    @NonNull
     @Override
-    public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    public ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         NewsItemBinding binder = NewsItemBinding.inflate(
                 LayoutInflater.from(parent.getContext()),
@@ -61,7 +62,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ArticleViewHol
     }
 
 
-    public class ArticleViewHolder extends RecyclerView.ViewHolder
+    public static class ArticleViewHolder extends RecyclerView.ViewHolder
     {
         final NewsItemBinding binding;
 

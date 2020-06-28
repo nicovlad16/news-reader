@@ -31,7 +31,7 @@ public class NewsRepositoryImpl implements NewsRepository
     {
         return remoteSource.getNewsArticles()
                 .map(new NewsDtoToArticleEntityMapper())
-                .flatMap(localSource::saveItems)
+                .doOnSuccess(localSource::saveItems)
                 .onErrorResumeNext(localSource.getArticles())
                 .map(new ArticleEntityToArticlesMapper());
     }

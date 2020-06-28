@@ -3,7 +3,6 @@ package com.nicoletavlad.newsreader.ui.main.feature.newslist.navigator;
 import android.content.Context;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.FragmentManager;
 
 import com.nicoletavlad.data.remote.exception.ApiException;
 import com.nicoletavlad.data.remote.exception.ConnectivityException;
@@ -14,13 +13,11 @@ import io.reactivex.annotations.NonNull;
 public class AlertNavigator
 {
 
-    private final FragmentManager fragmentManager;
     private final Context context;
 
 
-    public AlertNavigator(@NonNull FragmentManager fragmentManager, @NonNull Context context)
+    public AlertNavigator(@NonNull Context context)
     {
-        this.fragmentManager = fragmentManager;
         this.context = context;
     }
 

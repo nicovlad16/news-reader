@@ -17,15 +17,7 @@ public interface ArticleDao
     @Query("SELECT * FROM articles")
     Single<List<ArticleEntity>> queryArticles();
 
-    @Query("SELECT * FROM articles where id = :id")
-    Single<ArticleEntity> queryArticleItem(int id);
-
-    @Query("DELETE FROM articles")
-    Completable deleteAllArticles();
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertArticles(List<ArticleEntity> articles);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertArticle(ArticleEntity article);
 }

@@ -48,6 +48,7 @@ public class NewsListViewModel extends AndroidViewModel implements LifecycleObse
     @SuppressLint("CheckResult")
     public void refresh()
     {
+        isLoading.set(true);
         repository.getNewsArticles()
                 .map(new ArticlesToVMListMapper())
                 .observeOn(AndroidSchedulers.mainThread())
