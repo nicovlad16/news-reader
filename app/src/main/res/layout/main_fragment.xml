@@ -44,10 +44,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@android:color/white"
             app:items="@{viewModel.newsList}"
-            app:layout_constraintBottom_toTopOf="@id/copyright_message"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/copyright_message"
             app:layout_constraintTop_toBottomOf="@+id/refresh_button"
             app:layout_constraintVertical_bias="0.0"
