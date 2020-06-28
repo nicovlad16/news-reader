@@ -15,28 +15,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_container"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/refresh_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:onClick="@{() -> viewModel.refresh()}"
+            android:text="@string/refresh"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/refresh_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:items="@{viewModel.newsList}"
             app:layout_constraintBottom_toTopOf="@id/copyright_message"
             app:layout_constraintEnd_toStartOf="@id/copyright_message"
-            app:onRefreshListener="@{()->viewModel.refresh()}"
-            app:refreshing="@{viewModel.isLoading}">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:items="@{viewModel.newsList}"
-                app:newsHandler="@{viewModel}"
-                tools:listitem="@layout/news_item" />
-
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
+            app:layout_constraintTop_toBottomOf="@+id/refresh_button"
+            app:layout_constraintVertical_bias="0.0"
+            app:newsHandler="@{viewModel}"
+            tools:listitem="@layout/news_item" />
 
         <TextView
             android:id="@+id/copyright_message"

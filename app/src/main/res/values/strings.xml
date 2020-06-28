@@ -2,7 +2,7 @@
     <string name="app_name">NewsReader</string>
     <string name="article_item_image_description">article item image description</string>
     <string name="api_attribution">Powered by NewsAPI.org</string>
-    <string name="refresh">Refresh</string>
+    <string name="refresh">refresh</string>
     <string name="error_title">Error</string>
     <string name="network_error">Something went wrong. Check your Internet connection. Debug: %s</string>
     <string name="results">Received %d results.</string>
