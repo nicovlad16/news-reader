@@ -17,9 +17,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
         android:orientation="vertical"
         android:padding="20dp"
+        android:paddingBottom="35dp"
         tools:context=".ui.main.feature.newslist.fragment.MainFragment">
 
 
@@ -27,27 +27,27 @@
             android:id="@+id/article_item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.title}"
             android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBaseline_toBaselineOf="parent"
-            android:textStyle="bold"
+            android:paddingTop="15dp"
+            android:text="@{viewModel.title}"
             android:textSize="20sp"
-            android:paddingTop="15dp"/>
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/article_item_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLength="100"
             android:gravity="center"
+            android:maxLength="100"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:text="@{viewModel.content}"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/article_item_title" />
 
 
@@ -58,9 +58,9 @@
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/article_item_image_description"
             app:imageUrl="@{viewModel.image}"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/article_item_content"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/article_item_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

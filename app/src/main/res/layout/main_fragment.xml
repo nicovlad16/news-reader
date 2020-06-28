@@ -21,8 +21,8 @@
             android:id="@+id/swipe_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/message"
-            app:layout_constraintEnd_toStartOf="@id/message"
+            app:layout_constraintBottom_toTopOf="@id/copyright_message"
+            app:layout_constraintEnd_toStartOf="@id/copyright_message"
             app:onRefreshListener="@{()->viewModel.refresh()}"
             app:refreshing="@{viewModel.isLoading}">
 
@@ -39,7 +39,7 @@
 
 
         <TextView
-            android:id="@+id/message"
+            android:id="@+id/copyright_message"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@color/colorPrimary"
