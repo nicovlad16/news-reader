@@ -1,8 +1,8 @@
 package com.nicoletavlad.data;
 
 import com.nicoletavlad.data.features.news.local.NewsLocalDataSource;
-import com.nicoletavlad.data.features.news.mapper.ArticleEntityToArticlesMapper;
-import com.nicoletavlad.data.features.news.mapper.NewsDtoToArticleEntityMapper;
+import com.nicoletavlad.data.features.news.mapper.ArticleEntityToArticleMapper;
+import com.nicoletavlad.data.features.news.mapper.ArticlesDtoToArticleEntityMapper;
 import com.nicoletavlad.data.features.news.model.Article;
 import com.nicoletavlad.data.features.news.remote.NewsRemoteSource;
 
@@ -13,7 +13,6 @@ import io.reactivex.annotations.NonNull;
 
 public class NewsRepositoryImpl implements NewsRepository
 {
-
     private final NewsRemoteSource remoteSource;
     private final NewsLocalDataSource localSource;
 
@@ -30,10 +29,9 @@ public class NewsRepositoryImpl implements NewsRepository
     public Single<List<Article>> getNewsArticles()
     {
         return remoteSource.getNewsArticles()
-                .map(new NewsDtoToArticleEntityMapper())
+                .map(new ArticlesDtoToArticleEntityMapper())
                 .doOnSuccess(localSource::saveItems)
                 .onErrorResumeNext(localSource.getArticles())
-                .map(new ArticleEntityToArticlesMapper());
+                .map(new ArticleEntityToArticleMapper());
     }
 }
-

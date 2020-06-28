@@ -1,9 +1,7 @@
 package com.nicoletavlad.newsreader.ui.main.view.bindings;
 
-import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.databinding.BindingAdapter;
 

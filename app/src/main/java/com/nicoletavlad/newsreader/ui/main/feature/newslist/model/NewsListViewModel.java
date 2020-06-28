@@ -14,7 +14,7 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 import com.nicoletavlad.data.NewsRepository;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.listener.NewsHandler;
-import com.nicoletavlad.newsreader.ui.main.feature.newslist.model.mapper.ArticlesToVMListMapper;
+import com.nicoletavlad.newsreader.ui.main.feature.newslist.model.mapper.ArticlesToViewModelListMapper;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.reactive.SingleLiveEvent;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class NewsListViewModel extends AndroidViewModel implements LifecycleObse
     {
         isLoading.set(true);
         repository.getNewsArticles()
-                .map(new ArticlesToVMListMapper())
+                .map(new ArticlesToViewModelListMapper())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         this::onNewsArticlesReceived,
@@ -61,7 +61,6 @@ public class NewsListViewModel extends AndroidViewModel implements LifecycleObse
 
     private void onNewsArticlesError(Throwable throwable)
     {
-
         isLoading.set(false);
         error.setValue(throwable);
     }
@@ -70,6 +69,7 @@ public class NewsListViewModel extends AndroidViewModel implements LifecycleObse
     private void onNewsArticlesReceived(List<ArticleItemViewModel> articles)
     {
         isLoading.set(false);
+        newsList.clear();
         newsList.addAll(articles);
     }
 

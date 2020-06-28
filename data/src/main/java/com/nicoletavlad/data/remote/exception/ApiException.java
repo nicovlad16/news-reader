@@ -3,7 +3,6 @@ package com.nicoletavlad.data.remote.exception;
 
 public class ApiException extends RuntimeException
 {
-
     public final int httpCode;
 
 

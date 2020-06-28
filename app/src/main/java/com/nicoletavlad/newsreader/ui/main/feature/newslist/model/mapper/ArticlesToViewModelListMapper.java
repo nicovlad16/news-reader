@@ -8,9 +8,8 @@ import java.util.List;
 
 import io.reactivex.functions.Function;
 
-public class ArticlesToVMListMapper implements Function<List<Article>, List<ArticleItemViewModel>>
+public class ArticlesToViewModelListMapper implements Function<List<Article>, List<ArticleItemViewModel>>
 {
-
     @Override
     public List<ArticleItemViewModel> apply(List<Article> articles)
     {
@@ -29,5 +28,4 @@ public class ArticlesToVMListMapper implements Function<List<Article>, List<Arti
 
         return articlesViewModels;
     }
-
 }

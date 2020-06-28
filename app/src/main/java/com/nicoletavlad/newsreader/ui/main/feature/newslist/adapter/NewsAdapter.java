@@ -4,19 +4,17 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nicoletavlad.newsreader.databinding.NewsItemBinding;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.listener.NewsHandler;
 import com.nicoletavlad.newsreader.ui.main.feature.newslist.model.ArticleItemViewModel;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>
 {
-
     private List<ArticleItemViewModel> newsModelList;
     private NewsHandler handler;
 

@@ -2,7 +2,6 @@ package com.nicoletavlad.data.features.news.local;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public class NewsLocalDataSource

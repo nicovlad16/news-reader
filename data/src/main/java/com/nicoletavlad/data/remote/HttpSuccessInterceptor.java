@@ -14,7 +14,6 @@ import okhttp3.Response;
 
 class HttpSuccessInterceptor implements Interceptor
 {
-
     @NotNull
     @Override
     public Response intercept(@NotNull Chain chain)

@@ -1,6 +1,6 @@
 package com.nicoletavlad.data.features.news.remote;
 
-import com.nicoletavlad.data.features.news.remote.model.ArticleListDto;
+import com.nicoletavlad.data.features.news.remote.model.ArticlesDto;
 import com.nicoletavlad.data.remote.NewsApi;
 
 import io.reactivex.Single;
@@ -22,7 +22,7 @@ public class NewsRemoteSource
     }
 
 
-    public Single<ArticleListDto> getNewsArticles()
+    public Single<ArticlesDto> getNewsArticles()
     {
         return newsApi.getNewsArticles(API_KEY, EN_LANGUAGE_FILTER)
                 .subscribeOn(Schedulers.io());

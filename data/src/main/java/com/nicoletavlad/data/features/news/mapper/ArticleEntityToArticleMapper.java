@@ -8,7 +8,7 @@ import java.util.List;
 
 import io.reactivex.functions.Function;
 
-public class ArticleEntityToArticlesMapper implements Function<List<ArticleEntity>, List<Article>>
+public class ArticleEntityToArticleMapper implements Function<List<ArticleEntity>, List<Article>>
 {
     @Override
     public List<Article> apply(List<ArticleEntity> articleEntities)

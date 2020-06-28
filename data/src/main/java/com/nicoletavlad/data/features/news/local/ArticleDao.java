@@ -7,8 +7,6 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import io.reactivex.Completable;
-import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 @Dao
@@ -19,5 +17,4 @@ public interface ArticleDao
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertArticles(List<ArticleEntity> articles);
-
 }
