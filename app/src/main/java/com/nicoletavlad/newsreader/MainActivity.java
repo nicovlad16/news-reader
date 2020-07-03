@@ -1,14 +1,13 @@
 package com.nicoletavlad.newsreader;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.nicoletavlad.newsreader.ui.main.MainFragment;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.nicoletavlad.newsreader.ui.main.feature.newslist.fragment.MainFragment;
 
 public class MainActivity extends AppCompatActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
